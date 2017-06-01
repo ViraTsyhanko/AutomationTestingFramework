@@ -23,18 +23,20 @@ namespace FrameworkTests
         public void LoginWhenValidUserNameAndValidPassword()
         {
             Assert.IsTrue(LoginPage.IsAt());
-            LoginPage.PerformLoginOperation("veronikakats", "180895Vira");
-            Assert.IsTrue(MyMembershipPage.IsAt());
-            Console.WriteLine("User successfully loggedin ang is in MyMembershipPage");
+            LoginPage.PerformLoginOperationWithValidData("veronikakats", "180895Vira");
         }
 
         [TestMethod]
         public void LoginWhenValidUserNameAndInvalidPassword()
         {
             Assert.IsTrue(LoginPage.IsAt());
-            LoginPage.PerformLoginOperation("veronikakats", "180895vira");
-            Assert.IsTrue(LoginPage.IsAt());
-            Console.WriteLine("User is not loggedin ang is not in MyMembershipPage");
+            LoginPage.PerformLoginOperationWithInValidData("veronikakats", "180895vira");
+        }
+
+        [TestMethod]
+        public void TestIfEditPageIsOpened()
+        {
+            LoginPage.EditProfileOperation();
         }
 
 

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationTestingFramework.Pages
 {
-    public class MyMembershipPage
+    public static class MyMembershipPage
     {
         private static IWebElement _PageIdentifierElement
         {

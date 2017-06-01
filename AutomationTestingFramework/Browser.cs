@@ -43,22 +43,22 @@ namespace AutomationTestingFramework
             switch (br)
             {
                 case Browsers.Chrome:
-                {
-                    Driver = new ChromeDriver();
-                    break;
-                }
+                    {
+                        Driver = new ChromeDriver();
+                        break;
+                    }
 
                 case Browsers.Firefox:
-                {
-                    Driver = new FirefoxDriver();
-                    break;
-                }
+                    {
+                        Driver = new FirefoxDriver();
+                        break;
+                    }
 
                 case Browsers.Ie:
-                {
-                    Driver = new InternetExplorerDriver();
-                    break;
-                }
+                    {
+                        Driver = new InternetExplorerDriver();
+                        break;
+                    }
                 default:
                     Console.WriteLine("There is no such browser");
                     break;
@@ -76,39 +76,39 @@ namespace AutomationTestingFramework
             switch (elementIdentifier)
             {
                 case ElementIdentifier.Id:
-                {
-                    return FindElementWithWait(By.Id(value));
-                }
+                    {
+                        return FindElementWithWait(By.Id(value));
+                    }
 
                 case ElementIdentifier.XPath:
-                {
-                    return FindElementWithWait(By.XPath(value));
-                }
+                    {
+                        return FindElementWithWait(By.XPath(value));
+                    }
                 case ElementIdentifier.Name:
-                {
-                    return FindElementWithWait(By.Name(value));
-                }
+                    {
+                        return FindElementWithWait(By.Name(value));
+                    }
                 case ElementIdentifier.ClassName:
-                {
-                    return FindElementWithWait(By.ClassName(value));
-                }
+                    {
+                        return FindElementWithWait(By.ClassName(value));
+                    }
                 case ElementIdentifier.CssCelector:
-                {
-                    return FindElementWithWait(By.CssSelector(value));
-                }
+                    {
+                        return FindElementWithWait(By.CssSelector(value));
+                    }
                 case ElementIdentifier.LinkText:
-                {
-                    return FindElementWithWait(By.LinkText(value));
+                    {
+                        return FindElementWithWait(By.LinkText(value));
 
-                }
+                    }
                 case ElementIdentifier.PartialLinkText:
-                {
-                    return FindElementWithWait(By.PartialLinkText(value));
-                }
+                    {
+                        return FindElementWithWait(By.PartialLinkText(value));
+                    }
                 case ElementIdentifier.TagName:
-                {
-                    return FindElementWithWait(By.TagName(value));
-                }
+                    {
+                        return FindElementWithWait(By.TagName(value));
+                    }
                 default:
                     return null;
             }
@@ -116,10 +116,15 @@ namespace AutomationTestingFramework
 
         private static IWebElement FindElementWithWait(By by)
         {
-
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
             IWebElement myDynamicElement = wait.Until<IWebElement>(ExpectedConditions.ElementIsVisible(by));
             return myDynamicElement;
+        }
+
+        public static void SwitchTabs(int tabsIndex)
+        {
+            var windows = Driver.WindowHandles;
+            Driver.SwitchTo().Window(windows[tabsIndex]);
         }
     }
 }
